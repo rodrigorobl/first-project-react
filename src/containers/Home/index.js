@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -20,6 +21,7 @@ import {
 const App = () => {
   //const users = [];
   const [users, setUsers] = useState([]);
+  const history = useHistory()
   const inputName = useRef()
   const inputAge = useRef()
 
@@ -36,7 +38,7 @@ const App = () => {
     setUsers([...users, newUser]);
     //spread operator 3 pontinho ...
 
-
+    history.push('/usuarios')
 
   }
 
@@ -58,7 +60,6 @@ const App = () => {
         <Button onClick={addNewUser}>
           Cadastrar <img alt="seta" src={Arrow} />
         </Button>
-
 
       </ContainerItens>
     </Container>

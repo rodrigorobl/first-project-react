@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 import Avatar from '../../assets/avatar.svg';
@@ -18,6 +18,7 @@ import {
 const Users = () => {
   //const users = [];
   const [users, setUsers] = useState([]);
+  const history = useHistory()
 
 
   //Um estado no React e IMUTAVEL.
@@ -51,6 +52,10 @@ async function deleteUser(userId) {
   setUsers(newUsers)
 }
 
+function goBackPage(){
+  history.push('/')
+}
+
 return (
   <Container>
     <Image alt="logo-imagem" src={Avatar}/>
@@ -68,7 +73,7 @@ return (
           ))}
         </ul>
 
-        <Button>
+        <Button onClick={goBackPage}>
           <img alt="seta" src={Arrow} /> Voltar
         </Button>
 
